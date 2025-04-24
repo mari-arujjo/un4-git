@@ -54,3 +54,14 @@ $ echo "https://github.com/mari-arujjo/un4-git.git" > respostas.txt
 $ cat respostas.txt
 $ touch comandosUsados.txt
 $ nano comandosUsados.txt
+$ git add respostas.txt comandosUsados.txt
+$ git commit -m "Criação do arquivo de respostas e de comandos utilizados"
+$ git push origin main
+
+
+//coloquei o link do repositório e não da página! então vamos corrigir...
+$ nano respostas.txt
+//no nano editor -> https://mari-arujjo.github.io/un4-git/
+
+//adicionando as alterações que eu fiz no arquivo dos comandos usados, para depois fazer o commit...
+$ nano comandosUsados.txt
