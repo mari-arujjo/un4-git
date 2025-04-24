@@ -1,0 +1,56 @@
+$ mkdir un4-git
+$ cd un4-git
+$ git clone https://gitlab.com/mizael.cortez/curso-git-tarefa-4.git
+
+
+//abri o arquivo "index.html" no vs code e editei esse trecho de código:
+//<p>Aluno: Mariana Araújo Silva - 20242158060025</p>
+
+
+$ cd ~/un4-git/curso-git-tarefa-4/
+$ mkdir -p .github/workflows
+$ cd .github/workflows
+$ nano deploy.yml
+
+//adicionei o conteúdo abaixo no arquivo dentro do nnao editor:
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clonar repositório
+        uses: actions/checkout@v3
+
+      - name: Verificar se index.html existe
+        run: |
+          if [ ! -f public/index.html ]; then
+            echo "Erro: index.html não encontrado!"
+            exit 1
+          fi
+
+      - name: Deploy no GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+//
+
+
+//após isso, segui o seguinte caminho no GitHub: settings -> pages -> source -> github actions
+
+
+$ cd ~/un4-git/curso-git-tarefa-4/
+$ git add .
+$ git commit -m "Muda arquivo html e cria pasta oculta .github, com workflow para github pages"
+$ git remote set-url origin https://github.com/mari-arujjo/un4-git.git
+$ git push origin main
+$ echo "https://github.com/mari-arujjo/un4-git.git" > respostas.txt
+$ cat respostas.txt
+$ touch comandosUsados.txt
+$ nano comandosUsados.txt
